@@ -9,7 +9,7 @@ module.exports = () =>
 
     <div>Author: <input name="author" type="text"/></div>
 
-    <div>Email: <input name="title" type="text"/></div>
+    <div>Email: <input name="email" type="text"/></div>
 
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">Page Title</label>
@@ -20,7 +20,7 @@ module.exports = () =>
 
     <div>Content: <input name="content" type="text"/></div>
 
-    <div>Page status: <input name="title" type="text"/></div>
+    <div>Page status: <input name="status" type="text"/></div>
 
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">submit</button>
