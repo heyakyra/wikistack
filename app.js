@@ -12,12 +12,12 @@ models.db.authenticate().then(() => {
   console.log("connected to the database");
 });
 
-app.use('/wiki', wikiRouter);
+app.use("/wiki", wikiRouter);
 //app.use('/user', userRouter);
 
 app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
-  res.send(layout(""));
+  res.redirect("/wiki");
 });
 
 const init = async () => {
@@ -26,3 +26,5 @@ const init = async () => {
     console.log(`Listening on port ${PORT}`);
   });
 };
+
+init();
