@@ -3,6 +3,7 @@ const router = express.Router();
 const layout = require("../views/layout");
 const { Page } = require("../models");
 const { addPage } = require("../views");
+const { wikiPage } = require("../views");
 const bodyParser = require("body-parser");
 
 router.get("/", (req, res, next) => {
@@ -28,8 +29,18 @@ router.get("/add", (req, res, next) => {
   res.send(addPage());
 });
 
-router.get('/:slug', (req, res, next) => {
-  res.send(`you asked for slug ${req.params.slug}`)
-})
+router.get("/:slug", async (req, res, next) => {
+  try {
+    const page = await Page.findOne({
+      where: {
+        slug: req.params.slug
+      }
+    });
+    const output = wikiPage(page, "author");
+    res.send(output);
+  } catch (err) {
+    console.error(err);
+  }
+});
 
 module.exports = router;
