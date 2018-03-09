@@ -12,10 +12,13 @@ models.db.authenticate().then(() => {
   console.log("connected to the database");
 });
 
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use("/wiki", wikiRouter);
 //app.use('/user', userRouter);
 
 app.use(express.static(__dirname + "/public"));
+
 app.get("/", (req, res) => {
   res.redirect("/wiki");
 });
